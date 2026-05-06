@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Bithra | Welcome Home{% endblock %}
+
+{% block content %}
+<div class="row align-items-center py-5" style="background-color: #f1f8f1; border-radius: 20px; margin-bottom: 50px;">
+    <div class="col-md-6 px-5">
+        <h1 class="display-4 fw-bold" style="color: #2d5a27;">Grow Your Own <span style="color: #82ae7d;">Greenery</span></h1>
+        <p class="lead text-muted">Bithra provides you with the finest organic seeds to transform your balcony or home into a productive garden.</p>
+        <a href="/seeds/store/" class="btn btn-success btn-lg px-4 shadow-sm" style="background-color: #2d5a27; border: none;">
+            Start Shopping <i class="fas fa-arrow-right ms-2"></i>
+        </a>
+    </div>
+    <div class="col-md-6 text-center">
+        <i class="fas fa-seedling" style="font-size: 200px; color: #82ae7d;"></i>
+    </div>
+</div>
+
+<div class="row text-center mb-5">
+    <div class="col-lg-8 mx-auto">
+        <h2 class="fw-bold mb-4" style="color: #2d5a27;">Our Mission</h2>
+        <p class="fs-5 text-secondary">
+            At <strong>Bithra</strong>, we believe that everyone can be a farmer. 
+            We offer more than just seeds; we offer a lifestyle. Our mission is to promote food security 
+            and sustainable living by making home gardening easy, accessible, and fun for everyone in the city.
+        </p>
+    </div>
+</div>
+
+<div class="row text-center mt-5">
+    <h3 class="mb-4 fw-bold" style="color: #2d5a27;">Why Bithra?</h3>
+    
+    <div class="col-md-4 mb-4">
+        <div class="p-4 bg-light rounded-circle d-inline-block mb-3" style="width: 80px; height: 80px;">
+            <i class="fas fa-check-circle text-success fs-3"></i>
+        </div>
+        <h5>100% Organic</h5>
+        <p class="small text-muted">We ensure our seeds are chemical-free and non-GMO.</p>
+    </div>
+
+    <div class="col-md-4 mb-4">
+        <div class="p-4 bg-light rounded-circle d-inline-block mb-3" style="width: 80px; height: 80px;">
+            <i class="fas fa-book-open text-success fs-3"></i>
+        </div>
+        <h5>Care Guides</h5>
+        <p class="small text-muted">Every seed comes with a detailed care card for perfect growth.</p>
+    </div>
+
+    <div class="col-md-4 mb-4">
+        <div class="p-4 bg-light rounded-circle d-inline-block mb-3" style="width: 80px; height: 80px;">
+            <i class="fas fa-calendar-alt text-success fs-3"></i>
+        </div>
+        <h5>Planting Calendar</h5>
+        <p class="small text-muted">Don't know what to plant? Check our monthly smart calendar.</p>
+    </div>
+</div>
+{% endblock %}

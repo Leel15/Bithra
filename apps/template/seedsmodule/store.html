@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Bithra Store | Shop Seeds{% endblock %}
+
+{% block content %}
+<div class="text-center mb-5">
+    <h2 class="fw-bold" style="color: #2d5a27;">Our Seed Collection</h2>
+    <p class="text-muted">High-quality organic seeds for your home garden</p>
+</div>
+
+<div class="row row-cols-1 row-cols-md-3 g-4">
+    {% for seed in seeds %}
+    <div class="col">
+        <div class="card h-100 shadow-sm border-0" style="border-radius: 15px; overflow: hidden;">
+            {% if seed.image %}
+                <img src="{{ seed.image.url }}" class="card-img-top" alt="{{ seed.name }}" style="height: 200px; object-fit: cover;">
+            {% else %}
+                <div class="bg-light text-center py-5"><i class="fas fa-image fa-3x text-muted"></i></div>
+            {% endif %}
+            
+            <div class="card-body">
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                    <span class="badge bg-success-subtle text-success border border-success-subtle">{{ seed.category.name }}</span>
+                    <h5 class="fw-bold mb-0 text-dark">${{ seed.price }}</h5>
+                </div>
+                <h5 class="card-title fw-bold">{{ seed.name }}</h5>
+                <p class="card-text text-muted small">{{ seed.description|truncatewords:15 }}</p>
+            </div>
+            
+            <div class="card-footer bg-white border-0 pb-3">
+                <div class="d-grid gap-2">
+                <a href="{% url 'seed_detail' seed.id %}" class="btn btn-outline-success btn-sm">View Care Card</a>     
+                <a href="{% url 'add_to_cart' seed.id %}" class="btn btn-success shadow-sm" style="background-color: #2d5a27;">
+                        <i class="fas fa-cart-plus me-2"></i>Add to Cart
+                </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% empty %}
+    <div class="col-12 text-center py-5">
+        <p class="text-muted">No seeds available in the store yet.</p>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

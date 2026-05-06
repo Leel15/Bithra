@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+
+{% block title %}Bithra | My Basket{% endblock %}
+
+{% block content %}
+<div class="mb-5">
+    <h2 class="fw-bold" style="color: #2d5a27;"><i class="fas fa-shopping-basket me-2"></i>My Shopping Basket</h2>
+    <p class="text-muted">Review your selected seeds before checkout</p>
+</div>
+
+<div class="row">
+    <div class="col-md-8">
+        {% if cart_items %}
+            <div class="card border-0 shadow-sm rounded-4 overflow-hidden">
+                <table class="table table-hover align-middle mb-0">
+                    <thead class="bg-light">
+                        <tr>
+                            <th class="ps-4">Product</th>
+                            <th>Category</th>
+                            <th>Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in cart_items %}
+                        <tr>
+                            <td class="ps-4 py-3">
+                                <div class="d-flex align-items-center">
+                                    <img src="{{ item.image.url }}" class="rounded-3 me-3" style="width: 50px; height: 50px; object-fit: cover;">
+                                    <span class="fw-bold">{{ item.name }}</span>
+                                </div>
+                            </td>
+                            <td><span class="badge bg-light text-success border">{{ item.category.name }}</span></td>
+                            <td class="fw-bold">${{ item.price }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <div class="mt-3">
+                <a href="{% url 'clear_cart' %}" class="btn btn-link text-danger text-decoration-none small">
+                    <i class="fas fa-trash-alt me-1"></i> Clear My Basket
+                </a>
+            </div>
+        {% else %}
+            <div class="text-center py-5 bg-light rounded-4 border-dashed border-2">
+                <i class="fas fa-seedling fa-3x text-muted mb-3 opacity-50"></i>
+                <h5>Your basket is empty!</h5>
+                <p class="text-muted">You haven't added any seeds to your garden yet.</p>
+                <a href="{% url 'store' %}" class="btn btn-success px-4" style="background-color: #2d5a27;">Go to Store</a>
+            </div>
+        {% endif %}
+    </div>
+
+    <div class="col-md-4">
+        <div class="card border-0 shadow-sm p-4 rounded-4" style="background-color: #f8faf8;">
+            <h5 class="fw-bold mb-4">Order Summary</h5>
+            <div class="d-flex justify-content-between mb-2">
+                <span class="text-muted">Subtotal</span>
+                <span class="fw-bold">${{ total_price }}</span>
+            </div>
+            <div class="d-flex justify-content-between mb-2">
+                <span class="text-muted">Shipping</span>
+                <span class="text-success fw-bold">Free</span>
+            </div>
+            <hr>
+            <div class="d-flex justify-content-between mb-4">
+                <span class="h5 fw-bold">Total</span>
+                <span class="h5 fw-bold text-success">${{ total_price }}</span>
+            </div>
+            <button class="btn btn-success btn-lg w-100 shadow" style="background-color: #2d5a27; border-radius: 12px;">
+                Checkout <i class="fas fa-chevron-right ms-2"></i>
+            </button>
+        </div>
+    </div>
+</div>
+{% endblock %}
